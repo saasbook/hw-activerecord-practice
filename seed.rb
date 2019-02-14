@@ -1,11 +1,12 @@
-require 'faker'
 require 'active_record'
 require 'sqlite3'
 require 'csv'
 
 unless ENV['CLOBBER']
-  raise RuntimeError.new("*** Running this file will clobber the database and rebuild it with new random data, and the tests will not work.  This is probably not what you want.  If it is really, really what you want, say `CLOBBER=1 bundle exec ruby seed.rb` to force it.")
+  raise RuntimeError.new("*** Running this file will clobber the database and rebuild it with new random data, and the tests will not work.  This is probably not what you want.  If this is really, really what you want to do, add `gem 'faker'` to your Gemfile, re-run `bundle`, then say `CLOBBER=1 bundle exec ruby seed.rb` to force it.")
 end
+
+require 'faker'
 
 ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => 'activerecord_practice.sqlite3')
 ActiveRecord::Schema.define do
@@ -21,13 +22,19 @@ end
 class Customer < ActiveRecord::Base
   CSV.open("all_customers.csv", "w") do |csv_file|
     100.times do
-      c = Customer.create!(
-        :first => (first = Faker::Name.first_name),
-        :last => (last = Faker::Name.last_name),
-        :email => if rand() < 0.8 then Faker::Internet.email("#{first} #{last}") else nil end,
-        :birthdate => Faker::Date.birthday(13,65)
-        )
-      csv_file << [c.first, c.last, c.email, c.birthdate.strftime('%Y-%M-%d')]
+      first = Faker::Name.first_name
+      last = Faker::Name.last_name
+      birthdate = Faker::Date.birthday(13,65)
+      email = if rand() < 0.75          # 75% customers have valid email
+                Faker::Internet.email("#{first} #{last}")
+              elsif rand() < 0.5 # 5% have invalid email
+                "#{first}.#{last}"
+              else              # 20% have no email address
+                nil
+              end
+      c = Customer.create!(:first => first, :last => last,:email => email, :birthdate => birthdate)
+      csv_file << [first, last, email, %Q{="#{birthdate.strftime('%Y-%m-%d')}"}]
     end
   end
+  puts "all_customers.csv re-created"
 end
