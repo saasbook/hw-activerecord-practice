@@ -8,7 +8,7 @@ end
 
 require 'faker'
 
-ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => 'activerecord_practice.sqlite3')
+ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => 'customers.sqlite3')
 ActiveRecord::Schema.define do
   create_table 'customers', :force => true do |t|
     t.string 'first'
