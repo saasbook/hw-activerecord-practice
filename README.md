@@ -1,0 +1,2 @@
+# Practice with ActiveRecord basics
+
