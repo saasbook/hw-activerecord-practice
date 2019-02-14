@@ -33,7 +33,7 @@ class Customer < ActiveRecord::Base
                 nil
               end
       c = Customer.create!(:first => first, :last => last,:email => email, :birthdate => birthdate)
-      csv_file << [first, last, email, %Q{="#{birthdate.strftime('%Y-%m-%d')}"}]
+      csv_file << [c.id, first, last, email, %Q{="#{birthdate.strftime('%Y-%m-%d')}"}]
     end
   end
   puts "all_customers.csv re-created"
