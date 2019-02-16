@@ -8,6 +8,10 @@ class Customer < ActiveRecord::Base
   def to_s
     "  [#{id}] #{first} #{last}, #{email}, #{birthdate.strftime('%Y-%m-%d')}"
   end
+
+  #  NOTE: Every one of these can be solved entirely by ActiveRecord calls.
+  #  You should NOT need to call Ruby library functions for sorting, filtering, etc.
+  
   def self.candice_mayer
     # YOUR CODE HERE to return the one customer named Candice Mayer
   end
