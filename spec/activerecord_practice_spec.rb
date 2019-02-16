@@ -7,6 +7,7 @@ ALL_CUSTOMERS = [nil] + Customer.all.order('id')
 RSpec.configure do |config|
   config.default_formatter = 'doc'
   config.full_backtrace = false
+  config.backtrace_clean_patterns = /./
   config.around(:each) do |example|
     ActiveRecord::Base.transaction do
       example.run
