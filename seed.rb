@@ -14,14 +14,13 @@ ActiveRecord::Schema.define do
     t.string 'first'
     t.string 'last'
     t.string 'email'
-    t.string 'zip'
     t.datetime 'birthdate'
   end
 end
 
 class Customer < ActiveRecord::Base
-  CSV.open("all_customers.csv", "w") do |csv_file|
-    100.times do
+  CSV.open("customers.csv", "w") do |csv_file|
+    30.times do
       first = Faker::Name.first_name
       last = Faker::Name.last_name
       birthdate = Faker::Date.birthday(13,65)
@@ -36,5 +35,5 @@ class Customer < ActiveRecord::Base
       csv_file << [c.id, first, last, email, %Q{="#{birthdate.strftime('%Y-%m-%d')}"}]
     end
   end
-  puts "all_customers.csv re-created"
+  puts "customers.csv re-created"
 end
