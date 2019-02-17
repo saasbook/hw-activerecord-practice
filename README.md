@@ -131,6 +131,9 @@ database used by this code.)  Each time you make a change and save
 eventually get the method call right, the test will pass and print in
 green.  Then you can move on to the next example.
 
+When all the examples pass (RSpec should print each passing example's
+name in green), you're all done!
+
 ## Helpful Hints and Links
 
 As usual, you will have to look up the ActiveRecord documentation to
@@ -181,3 +184,19 @@ various gems.  If this were a Rails app, Rails would automatically
 `require` all the gems in your Gemfile when your app starts up, so
 you'd almost never see explicit `require`s in the code files.
 
+Finally, for the curious, you may wonder why the RSpec tests behave
+the same each time for cases where you are modifying the database.
+For example, if you successfully pass test case #12, "delete customer
+Maggie Herman", wouldn't that cause problems when you re-run the tests
+and that customer has _already_ been deleted?
+
+This is handled by running each test inside a [database
+transaction](https://en.wikipedia.org/wiki/Database_transaction),
+and just before the test case finishes, raising a pseudo-exception
+that will cause the transaction to be [rolled
+back](https://en.wikipedia.org/wiki/Rollback_(data_management)), which
+causes all the changes visible inside the transaction to be undone.
+When we test Rails apps, this is also the way the test database is
+handled: every single test case (and you will have hundreds or
+thousands of them) starts and ends with the database in the same "clean"
+state, so that they run in a predictable environment.
