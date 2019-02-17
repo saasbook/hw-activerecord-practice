@@ -122,9 +122,11 @@ running Guard should come to life as Guard tries to re-run the tests.
 Let's work on example #1 as listed in the output of `rspec`.  The
 output should look like this:
 
+```
   1) to find customer(s) Candice Mayer (HINT: lookup `find_by`)
-     # define Customer.candice_mayer and delete line 37 in /Users/fox/Google Drive (armandofox@gmail.com)/fox/courses/SaaS/assignments/hw-activerecord-intro/spec/activerecord_practice_spec.rb
-     # /Users/fox/Google Drive (armandofox@gmail.com)/fox/courses/SaaS/assignments/hw-activerecord-intro/spec/activerecord_practice_spec.rb:35
+     # define Customer.candice_mayer and delete line 37 in /home/fox/hw-activerecord-intro/spec/activerecord_practice_spec.rb
+     # /home/fox/hw-activerecord-intro/spec/activerecord_practice_spec.rb:35
+```
 
 The helpful instrumentation we've placed in the specfile says that to
 work on this example, you should define a class method
