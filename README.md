@@ -140,6 +140,12 @@ green.  Then you can move on to the next example.
 When all the examples pass (RSpec should print each passing example's
 name in green), you're all done!
 
+**NOTE:**  If you want to try the examples interactively, start the
+Ruby interpreter with `bundle exec irb`, and then within the Ruby
+interpreter type `load 'activerecord_practice.rb'`.  This will define
+the `Customer` class and allow you to try things like
+`Customer.where(...)` directly in the REPL (read-eval-print loop).
+
 ## Helpful Hints and Links
 
 

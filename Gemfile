@@ -1,3 +1,5 @@
+source 'https://rubygems.org'
+
 ruby '~> 2.0'
 
 gem 'activerecord', '~> 4.2'

@@ -38,7 +38,7 @@ describe 'ActiveRecord practice' do
     specify 'Candice Mayer (HINT: lookup `find_by`)' do
       method = "candice_mayer"
       skip "define Customer.#{method} and delete line #{__LINE__} in #{__FILE__}"
-      expect(Customer.send(method).id).to eq(1)
+      expect(Customer.send(method).id).to eq(24)
     end
     specify 'with valid email (email addr contains "@") (HINT: look up SQL LIKE operator)' do
       method = 'with_valid_email'
@@ -92,13 +92,13 @@ describe 'ActiveRecord practice' do
       method = 'change_all_invalid_emails_to_blank'
       skip "define Customer.#{method} and delete line #{__LINE__} in #{__FILE__}"
       Customer.send(method)
-      expect(Customer.count("email != '' AND email IS NOT NULL and email NOT LIKE '%@%'")).to be_zero
+      expect(Customer.where("email != '' AND email IS NOT NULL and email NOT LIKE '%@%'").count).to be_zero
     end
     specify 'database by deleting customer Maggie Herman' do
       method = 'delete_maggie_herman'
       skip "define Customer.#{method} and delete line #{__LINE__} in #{__FILE__}"
       Customer.send(method)
-      expect(Customer.find_by(:first => 'Maggie', :last => 'Herman')).to be_empty
+      expect(Customer.find_by(:first => 'Maggie', :last => 'Herman')).to be_nil
     end
     specify 'database by deleting all customers born on or before 31 Dec 1977' do
       method = 'delete_everyone_born_before_1978'
