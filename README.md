@@ -43,20 +43,6 @@ change to your file, tests are re-run automatically.
 
 ## Background Information
 
-Although ActiveRecord is a key part of Rails, you can use the
-ActiveRecord library outside of a Rails app.  Indeed, these exercises
-make use of ActiveRecord, but the exercises themselves do not
-constitute a Rails app.  That's why the Gemfile lists `active_record`
-as a gem dependency: in a Rails app, the Gemfile would just list
-`rails` as a gem, but `rails` in turn depends on `active_record`, and
-Bundler would detect and resolve that dependency.
-
-Note also that the two files you will be modifying,
-`activerecord_practice.rb` and the specfile `spec/activerecord_practice_spec.rb`,
-explicitly `require` various gems.  If this were a Rails app, Rails
-would automatically `require` all the gems in your Gemfile, so you'd
-never see explicit `require`s in the code files.
-
 Your goal is to write ActiveRecord queries against the fake customer
 database whose schema is as follows:
 
@@ -149,7 +135,14 @@ green.  Then you can move on to the next example.
 
 As usual, you will have to look up the ActiveRecord documentation to
 learn how to get these queries to work, which is part of the learning
-process.
+process:
+
+* [Intro to
+ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html)
+
+* [Basic queries using ActiveRecord](https://guides.rubyonrails.org/active_record_querying.html)
+
+* [Complete ActiveRecord documentation (for Rails 4.2.x)](https://api.rubyonrails.org/v4.2.9/classes/ActiveRecord/Base.html)
 
 Even though the examples call for filtering and sometimes sorting a
 subset of customer records, **you should never need to call** Ruby
@@ -162,4 +155,29 @@ result records.  To remove that temptation, the RSpec tests raise an
 error if you directly use `ActiveRecord::Base.find` in your code.  (Later in the
 course we will explore the RSpec mechanisms that allow us to do this
 "method shadowing" to disable certain methods in testing.)
+
+## Bonus background information
+
+Although ActiveRecord is a key part of Rails, you can use the
+ActiveRecord library outside of a Rails app.  Indeed, these exercises
+make use of ActiveRecord, but the exercises themselves do not
+constitute a Rails app.  So there are a few differences between how we
+are using AR here and how you'd use it in a Rails app:
+
+1.  The Gemfile lists `active_record`
+as an explicit dependency.  In a Rails app, the Gemfile would just list
+`rails` as a gem, but `rails` in turn depends on `active_record`, and
+Bundler would detect and resolve that dependency.
+
+2. Similarly, in `activerecord_practice.rb` there is a call to
+`establish_connection`.  In a normal Rails app you would never need
+this, since Rails itself takes care of managing the database
+connections and there are even Rails extensions that can spread
+connections across multiple databases and handle master-slave replication.
+
+3. The two files in the assignment, `activerecord_practice.rb` and the
+specfile `spec/activerecord_practice_spec.rb`, explicitly `require`
+various gems.  If this were a Rails app, Rails would automatically
+`require` all the gems in your Gemfile when your app starts up, so
+you'd almost never see explicit `require`s in the code files.
 
