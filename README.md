@@ -39,7 +39,13 @@ change to your file, tests are re-run automatically.
 
 1. Fork the repo on GitHub and clone your fork.
 
-2. In the toplevel directory of the assignment, run `bundle` to make sure you have the necessary Gems.
+2. In the toplevel directory of the assignment, run `bundle` to make
+sure you have the necessary Gems.
+
+3. Suggested: make a copy of the file `customers.sqlite3`, which is
+the SQLite database used in these exercises.  That way if you
+accidentally get the database into a state from which you can't
+restore it, you can just restore from your backup file. 
 
 ## Background Information
 
