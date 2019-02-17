@@ -142,15 +142,23 @@ name in green), you're all done!
 
 ## Helpful Hints and Links
 
+
+If you have never worked with relational databases before, we strongly
+recommend you get some very basic background: [Intro to Relational
+Databases](https://lagunita.stanford.edu/courses/DB/RDB/SelfPaced/about)
+and [Relational
+Algebra](https://lagunita.stanford.edu/courses/DB/RA/SelfPaced/about),
+two short (~30 minute) self-paced courses from Stanford's
+highly-respected database group.
+
+
 As usual, you will have to look up the ActiveRecord documentation to
 learn how to get these queries to work, which is part of the learning
 process:
 
 * [Intro to
 ActiveRecord](https://guides.rubyonrails.org/active_record_basics.html)
-
 * [Basic queries using ActiveRecord](https://guides.rubyonrails.org/active_record_querying.html)
-
 * [Complete ActiveRecord documentation (for Rails 4.2.x)](https://api.rubyonrails.org/v4.2.9/classes/ActiveRecord/Base.html)
 
 Even though the examples call for filtering and sometimes sorting a
@@ -164,6 +172,15 @@ result records.  To remove that temptation, the RSpec tests raise an
 error if you directly use `ActiveRecord::Base.find` in your code.  (Later in the
 course we will explore the RSpec mechanisms that allow us to do this
 "method shadowing" to disable certain methods in testing.)
+
+Finally, if you're interested in learning more about the underlying
+SQL (Structured Query Language) commands that ActiveRecord is
+generating, we recommend:
+
+* [SQL
+Queries](https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/about),
+another short self-paced course from our friends at Stanford
+* [SQL Teaching](https://www.sqlteaching.com), which allows you to interactively
 
 ## Bonus background information
 
