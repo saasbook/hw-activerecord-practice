@@ -71,9 +71,9 @@ describe 'ActiveRecord practice' do
       Customer.change_all_invalid_emails_to_blank
       expect(Customer.where("email != '' AND email IS NOT NULL and email NOT LIKE '%@%'").count).to be_zero
     end
-    xspecify 'database by deleting customer Maggie Herman' do
+    xspecify 'database by deleting customer Meggie Herman' do
       Customer.delete_maggie_herman
-      expect(Customer.find_by(:first => 'Maggie', :last => 'Herman')).to be_nil
+      expect(Customer.find_by(:first => 'Meggie', :last => 'Herman')).to be_nil
     end
     xspecify 'database by deleting all customers born on or before 31 Dec 1977' do
       Customer.delete_everyone_born_before_1978
