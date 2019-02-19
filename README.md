@@ -19,7 +19,9 @@ provided tests to see if your code is correct.
 
 The files in this assignment are:
 
-* `activerecord_practice.rb`, where you will fill in your code
+* `lib/activerecord_practice.rb`, where you will fill in your code.
+In non-Rails Ruby projects (gems, standalone apps, etc.), `lib`
+(historically, derived from "library") is where code files typically live.
 
 * `spec/activerecord_practice_spec.rb` (the "specfile"), containing RSpec tests that
 will check the result of each query you write.
@@ -77,10 +79,11 @@ would all fail, because you haven't written the code for them yet.)
 Open the specfile and take a look.
 Your workflow will be as follows:
 
-1. Pick an example to work on (we recommend doing them in order)
+1. Pick an example to work on (we recommend doing them in order).
+Each example (test case) begins with `xspecify`.
 
-2. In that example, uncomment the line beginning `skip`; this will
-cause that particular test _not_ to be skipped on the next testing run
+2. In that example, change `xspecify` to `specify` and save the file;
+this change will cause that particular test _not_ to be skipped on the next testing run
 
 3. The test will immediately fail because you haven't written the
 needed code
@@ -96,8 +99,9 @@ help us.  `guard` is a gem that watches for various files in your
 project to change, and when they do, it automatically re-runs a
 predefined set of tests.  We have configured `guard` here so that
 whenever you change either the specfile or
-`activerecord_practice.rb`, it will re-run all tests that do _not_
-have a `skip` line.  (If you're curious about how Guard works, you can
+`activerecord_practice.rb`, it will re-run all tests that begin with
+`specify` (as opposed to `xspecify`).
+(If you're curious about how Guard works, you can
 look in `Guardfile` to see, but you don't need to worry about it.)
 
 * In a terminal window, say `guard`.  You should see something like
@@ -115,27 +119,37 @@ Let's work on example #1 as listed in the output of `rspec`.  The
 output should look like this:
 
 ```
-  1) to find customer(s) Candice Mayer (HINT: lookup `find_by`)
-     # define Customer.candice_mayer and delete line 37 in /home/fox/hw-activerecord-intro/spec/activerecord_practice_spec.rb
-     # /home/fox/hw-activerecord-intro/spec/activerecord_practice_spec.rb:35
+  1) ActiveRecord practice to find customer(s) anyone with first name Candice
+     # Temporarily skipped with xspecify
+     # /home/fox/hw-activerecord-intro/spec/activerecord_practice_spec.rb:40
 ```
 
-The helpful instrumentation we've placed in the specfile says that to
-work on this example, you should define a class method
-`Customer.candice_mayer`, and delete line 37 in the specfile.
-Go ahead and delete that line and save the specfile, and Guard should
+As the output suggests, take a look at line 40 in the specfile.
+In the body of the testcase, you can see that the test will try to
+call the class method `Customer.any_candice`.
+Change `xspecify` to `specify` in line 40, save the specfile, and Guard should
 once again run the tests; but this time, test #1 will not be skipped
-but instead will fail.
+but instead will fail.  
 
-Now go to `activerecord_practice.rb` where we have defined an empty
-method `Customer.candice_mayer`.  Fill in the body of this method so
-that it returns the single `Customer` object corresponding to customer
-Candice Mayer.  (Reminder: the `customers.csv` file contains an
+Now go to `lib/activerecord_practice.rb` where we have defined an empty
+method `Customer.any_candice`.  Fill in the body of this method so
+that it returns the enumerable of `Customer` objects whose first
+name(s) match "Candice".
+(Reminder: the `customers.csv` file contains an
 exported version of the contents of `customers.sqlite3`, which is the
 database used by this code.)  Each time you make a change and save
 `activerecord_practice.rb`, Guard will re-run the tests.  When you
-eventually get the method call right, the test will pass and print in
-green.  Then you can move on to the next example.
+eventually get the method call right, the test will pass and the name
+of the test will print in
+green, with all still-pending tests printed in yellow.
+Then you can move on to the next example.
+
+Note that for most test cases, the test case will initially fail
+because the class method of `Customer` that it tries to call doesn't
+exist at all (we only provided empty method skeletons for the first
+couple of examples).  But by reading each test case's code, you can
+see what it expects the class method to be named, and define it
+yourself. 
 
 When all the examples pass (RSpec should print each passing example's
 name in green), you're all done!
