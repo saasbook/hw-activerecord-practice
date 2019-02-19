@@ -230,7 +230,7 @@ you'd almost never see explicit `require`s in the code files.
 Finally, for the curious, you may wonder why the RSpec tests behave
 the same each time for cases where you are modifying the database.
 For example, if you successfully pass test case #12, "delete customer
-Maggie Herman", wouldn't that cause problems when you re-run the tests
+Meggie Herman", wouldn't that cause problems when you re-run the tests
 and that customer has _already_ been deleted?
 
 This is handled by running each test inside a [database
