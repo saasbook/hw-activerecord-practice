@@ -2,3 +2,8 @@
 #*#
 .#*
 tmp/
+
+# codio files to ignore
+.codio
+.guides/
+.settings
