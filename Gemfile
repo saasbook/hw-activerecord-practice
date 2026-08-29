@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "~> 3.3.8" 
+ruby ">= 3.3.8"
 
 gem "activerecord", "~> 8.0"
 gem "byebug", "~> 12.0"
