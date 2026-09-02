@@ -97,9 +97,9 @@ When all the examples pass (RSpec should print each passing example's name in gr
 
 As usual, you will have to look up the ActiveRecord documentation to learn how to get these queries to work, which is part of the learning process:
 
-* [Intro to ActiveRecord](https://guides.rubyonrails.org/v4.2/active_record_basics.html)
-* [Basic queries using ActiveRecord](https://guides.rubyonrails.org/v4.2/active_record_querying.html)
-* [Complete ActiveRecord documentation (for Rails 4.2.x)](https://api.rubyonrails.org/v4.2/classes/ActiveRecord/Base.html)
+* [Intro to ActiveRecord](https://guides.rubyonrails.org/v7.2/active_record_basics.html)
+* [Basic queries using ActiveRecord](https://guides.rubyonrails.org/v7.2/active_record_querying.html)
+* [Complete ActiveRecord documentation (for Rails 7.2.x)](https://api.rubyonrails.org/v7.2/classes/ActiveRecord/Base.html)
 
 Even though the examples call for filtering and sometimes sorting a subset of customer records, **you should never need to call** Ruby collection methods like `map` or `collect` or `sort` -- 100% of the work can be done in the ActiveRecord call.
 
