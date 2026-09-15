@@ -1,6 +1,6 @@
-# CHIP 4.3: Practice with ActiveRecord Basics
+# Page 1
 
-> These instructions are also in this repo under [`instructions/`](instructions/README.md), including the [Submission](instructions/02-Submission.md) page.
+# CHIP 4.3: Practice with ActiveRecord Basics
 
 For this assignment we've created a database of 30 fake customers, with fake names, fake email addresses, and fake birthdates (courtesy of the [Faker gem](https://github.com/stympy/faker)).
 
@@ -33,9 +33,9 @@ An alternative is [SQLTutorial.org](https://sqltutorial.org), sections 1-4, 11, 
 
 To get started,
 
-1. Clone the repo (`git clone https://github.com/saasbook/hw-activerecord-practice.git`)
+1. Clone the repo (https://github.com/saasbook/hw-activerecord-practice)
 
-2. Change into the app's root directory `hw-activerecord-practice` (`cd hw-activerecord-practice`)
+2. Change into the app's root directory `hw-activerecord-practice`
 
 3. In the toplevel directory of the assignment, run `bundle` to make sure you have the necessary gems.
 
@@ -67,9 +67,9 @@ We've set up the tests so that initially all tests are skipped.  (They would all
 
 ## Automating the workflow using Guard
 
-Does this mean you have to manually run `rspec` every time you want to work on a new example?  No!  Happily there is some automation that can help us.  `guard` is a gem that watches for files in your project to change, and when they do, it automatically re-runs a predefined set of tests.  We have configured `guard` here so that whenever you change either the specfile or `activerecord_practice.rb`, it will re-run all tests that begin with `specify` (as opposed to `xspecify`). (If you're curious about how Guard works, you can look in `Guardfile` to see, but you don't need to worry about it.)
+Does this mean you have to manually run `rspec` every time you want to work on a new example?  No!  Happily there is some automation that can help us.  `bundle exec guard` is a gem that watches for files in your project to change, and when they do, it automatically re-runs a predefined set of tests.  We have configured `bundle exec guard` here so that whenever you change either the specfile or `activerecord_practice.rb`, it will re-run all tests that begin with `specify` (as opposed to `xspecify`). (If you're curious about how Guard works, you can look in `Guardfile` to see, but you don't need to worry about it.)
 
-* In a terminal window, type `guard`.  You should see something like
+* In a terminal window, type `bundle exec guard`.  You should see something like
 "Guard is now watching..."
 
 Although you see a prompt (`guard(main)>`), you don't need to type anything.  In an editor window, make a trivial change to either the specfile or `activerecord_practice.rb`, such as inserting a space, and save the file.  Within one or two seconds, the terminal window running Guard should come to life as Guard tries to re-run the tests.
@@ -125,3 +125,7 @@ Although ActiveRecord is a key part of Rails, you can use the ActiveRecord libra
 Finally, for the curious, you may wonder why the RSpec tests behave the same each time for cases where you are modifying the database. For example, if you successfully pass test case #12, "delete customer Meggie Herman", wouldn't that cause problems when you re-run the tests and that customer has _already_ been deleted?
 
 This is handled by running each test inside a [database transaction](https://en.wikipedia.org/wiki/Database_transaction), and just before the test case finishes, raising a pseudo-exception that will cause the transaction to be [rolled back](https://en.wikipedia.org/wiki/Rollback_(data_management)), which causes all the changes visible inside the transaction to be undone. When we test Rails apps, this is also the way the test database is handled: every single test case (and you will have hundreds or thousands of them) starts and ends with the database in the same "clean" state, so that they run in a predictable environment.
+
+---
+
+[Contents](README.md) | [Submission →](02-Submission.md)

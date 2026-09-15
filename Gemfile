@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby ">= 3.3.8"
 
-gem "activerecord", "~> 8.0"
+gem "activerecord", "~> 7.2.0"
 gem "byebug", "~> 12.0"
 gem "sqlite3", "~> 2.6" 
 gem "rspec",  "~> 3.13.0"
