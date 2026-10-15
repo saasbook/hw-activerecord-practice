@@ -1,4 +1,5 @@
-# Active Records Practice
+# CHIP 4.3 Instructions
 
-1. [Page 1](01-Page-1.md)
-2. [Submission](02-Submission.md)
+The instructions for this assignment are contained in the [root README](../README.md).
+
+This file is here for consistency with all CHIPS. In other assignments, you may find longer instructions within this `instructions/` directory.
